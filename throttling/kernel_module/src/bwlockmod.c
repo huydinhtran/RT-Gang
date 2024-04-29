@@ -62,7 +62,8 @@ int init_module (void)
 	smp_mb ();
 
 	/* Prevent state change for online CPUs */
-	get_online_cpus ();
+	// get_online_cpus ();
+	cpus_read_lock ();
 
 	/* Perform per-cpu initialization */
 	for_each_online_cpu (i) {
@@ -153,7 +154,8 @@ void cleanup_module (void)
 	smp_mb ();
 
 	/* Refresh the online cpu information */
-	get_online_cpus ();
+	// get_online_cpus ();
+	cpus_read_lock ();
 
 	/* Stop performance counters */
 	disable_counters ();
