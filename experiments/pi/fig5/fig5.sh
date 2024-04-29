@@ -18,7 +18,7 @@ do_solo()
 	      -i 110 --jobs 500 --period 20 -v 1 &> /tmp/tau_1.solo
 
     sleep 5
-    mv trace.dat trace.solo
+    mv trace.dat solo.dat
     mv /tmp/*.solo .
 }
 #==============================================================================
@@ -39,7 +39,7 @@ do_mint()
     killall -s SIGTERM tau_be_mem
     killall -s SIGTERM tau_be_cpu
     sleep 5
-    mv trace.dat trace.mint
+    mv trace.dat mint.dat
     mv /tmp/*.mint .
 }
 #==============================================================================
@@ -65,7 +65,7 @@ do_rtg()
     killall -s SIGTERM tau_be_mem
     killall -s SIGTERM tau_be_cpu
     sleep 5
-    mv trace.dat trace.rtg
+    mv trace.dat rtg.dat
     mv /tmp/*.rtg .
 
     echo NO_RT_GANG_LOCK > /sys/kernel/debug/sched_features
